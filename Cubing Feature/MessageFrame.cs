@@ -28,10 +28,45 @@ namespace Cubing_Feature
 
         public class Dimensions
         {
-            public int Length { get; set; }
-            public int Width { get; set; }
-            public int Height { get; set; }
+            private double _length;
+            private double _width;
+            private double _height;
 
+            public double Length
+            {
+                get => _length;
+                set
+                {
+                    if (value <= 0)
+                        throw new ArgumentException("Box/Item dimensions are wrong");
+
+                    _length = value;
+                }
+            }
+
+            public double Width
+            {
+                get => _width;
+                set
+                {
+                    if (value <= 0)
+                        throw new ArgumentException("Box/Item dimensions are wrong");
+
+                    _width = value;
+                }
+            }
+
+            public double Height
+            {
+                get => _height;
+                set
+                {
+                    if (value <= 0)
+                        throw new ArgumentException("Box/Item dimensions are wrong");
+
+                    _height = value;
+                }
+            }
         }
 
         //---------------------------------------------------------------------------------------
@@ -43,7 +78,7 @@ namespace Cubing_Feature
 
         public class BoxToUse
         {
-            public Guid LicensePlateNumber { get; set; }
+            public Guid BoxID { get; set; }
             public int NumberOfItems { get; set; }
         }
     }

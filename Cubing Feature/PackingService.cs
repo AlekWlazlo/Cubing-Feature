@@ -9,22 +9,22 @@ namespace Cubing_Feature
     {
         public static MessageFrame.PackingResponse Calculate(PackingRequest request) //?
         {
-            int perBox =
+            double perBox =
             (request.BoxType.Dimensions.Length / request.Article.Dimensions.Length) *
             (request.BoxType.Dimensions.Width / request.Article.Dimensions.Width) *
             (request.BoxType.Dimensions.Height / request.Article.Dimensions.Height);
 
             var result = new MessageFrame.PackingResponse();
-            int remaining = request.Quantity;
+            double remaining = request.Quantity;
 
             while (remaining > 0)
             {
-                int inBox = Math.Min(perBox, remaining);
+                double inBox = Math.Min(perBox, remaining);
 
                 result.BoxesToUse.Add(new BoxToUse
                 {
-                    LicensePlateNumber = Guid.NewGuid(),
-                    NumberOfItems = inBox
+                    BoxID = Guid.NewGuid(),
+                    NumberOfItems = (int)inBox
                 });
 
                 remaining -= inBox;
