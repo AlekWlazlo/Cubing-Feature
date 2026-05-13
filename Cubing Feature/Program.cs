@@ -23,7 +23,7 @@ string requestJson = """
     "Quantity": 28,
     "Article": {
         "Name": "Cube_1",
-        "Dimensions": {"Length": 10  , "Width": 10, "Height": 10}
+        "Dimensions": {"Length": 5  , "Width": 5, "Height": 5}
         },
         "BoxType": {
         "Name": "Box",
