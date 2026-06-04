@@ -10,20 +10,20 @@ namespace Cubing_Feature
         public class PackingRequest
         {
             public int Quantity { get; set; }
-            public Article Article { get; set; }
-            public BoxType BoxType { get; set; }
+            public Article? Article { get; set; }
+            public BoxType? BoxType { get; set; }
         }
 
         public class Article
         {
-            public string Name { get; set; }
+            public string? Name { get; set; }
             public Dimensions? Dimensions { get; set; }
         }
 
         public class BoxType
         {
-            public string Name { get; set; }
-            public Dimensions Dimensions {  get; set; }
+            public string? Name { get; set; }
+            public Dimensions? Dimensions {  get; set; }
         }
 
         public class Dimensions
@@ -35,45 +35,39 @@ namespace Cubing_Feature
             public double Length
             {
                 get => _length;
-                set
-                {
-                    if (value <= 0)
-                        throw new ArgumentException("Box/Item dimensions are wrong");
-
-                    _length = value;
-                }
+                set => _length = DimensionValidityCheck(value);
             }
 
             public double Width
             {
                 get => _width;
-                set
-                {
-                    if (value <= 0)
-                        throw new ArgumentException("Box/Item dimensions are wrong");
-
-                    _width = value;
-                }
+                set => _width = DimensionValidityCheck(value);
             }
 
             public double Height
             {
                 get => _height;
-                set
-                {
-                    if (value <= 0)
-                        throw new ArgumentException("Box/Item dimensions are wrong");
-
-                    _height = value;
-                }
+                set => _height = DimensionValidityCheck(value);
             }
         }
 
-        //---------------------------------------------------------------------------------------
+        public static double DimensionValidityCheck(double Dimension)
+        {
+
+            if (Dimension < 0)
+            {
+                MessageFeatures.RedColor("Dimension cannot be negative! The valuse has been overwritten by a positive number");
+                return -Dimension;
+            }
+            else if (Dimension == 0)
+                throw new ArgumentException("Dimensions cannot be 0!");
+            else
+                return Dimension;
+        }
 
         public class PackingResponse
         {
-            public List<BoxToUse> BoxesToUse { get; set; } = new();
+            public List<BoxToUse> BoxesToUse { get; set; } = new List<BoxToUse>();
         }
 
         public class BoxToUse

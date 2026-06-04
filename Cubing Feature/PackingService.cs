@@ -7,14 +7,14 @@ namespace Cubing_Feature
 {
     public static class PackingService
     {
-        public static MessageFrame.PackingResponse Calculate(PackingRequest request) //?
+        public static PackingResponse Calculate(PackingRequest request)
         {
             double perBox =
             (request.BoxType.Dimensions.Length / request.Article.Dimensions.Length) *
             (request.BoxType.Dimensions.Width / request.Article.Dimensions.Width) *
             (request.BoxType.Dimensions.Height / request.Article.Dimensions.Height);
 
-            var result = new MessageFrame.PackingResponse();
+            var result = new PackingResponse();
             double remaining = request.Quantity;
 
             while (remaining > 0)

@@ -39,8 +39,8 @@ namespace Cubing_Feature
 
         public class ErrorResponse
         {
-            public string Error { get; set; }
-            public string Details { get; set; }
+            public string? Error { get; set; }
+            public string? Details { get; set; }
         }
     }
 }

@@ -1,20 +1,4 @@
-﻿//PackingRequest (obiekt główny)
-//├── Quantity(int)
-//├── Article(obiekt)
-//│     ├── Name(string)
-//│     └── Dimensions(obiekt)
-//│           ├── Length(int)
-//│           ├── Width(int)
-//│           └── Height(int)
-//│
-//└── BoxType(obiekt)
-//      ├── Name(string)
-//      └── Dimensions(obiekt)
-//            ├── Length(int)
-//            ├── Width(int)
-//            └── Height(int)
-
-using Cubing_Feature;
+﻿using Cubing_Feature;
 
 //string requestJson = "";
 
@@ -27,16 +11,16 @@ string requestJson = """
         },
         "BoxType": {
         "Name": "Box",
-        "Dimensions": {"Length": 20 , "Width": 20, "Height": 20}
+        "Dimensions": {"Length": 5 , "Width": 20, "Height": 20}
         }
     }
     """;
 
 Console.WriteLine("API REQUEST JSON: \n");
-Console.WriteLine(requestJson);
+MessageFeatures.YellowColor(requestJson);
 
 string responseJson = ApiEndpoint.Calculate(requestJson);
 Console.WriteLine("\n\n API RESPONSE JSON: \n");
-Console.WriteLine(responseJson);
+MessageFeatures.YellowColor(responseJson);
 
 Console.Read();
