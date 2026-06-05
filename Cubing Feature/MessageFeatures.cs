@@ -20,5 +20,12 @@ namespace Cubing_Feature
             Console.ResetColor();
         }
 
+        static public void GreenColor(string message)
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine(message);
+            Console.ResetColor();
+        }
+
     }
 }

@@ -22,14 +22,15 @@ namespace Cubing_Feature
             }
             catch (JsonException ex)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 ErrorResponse response = new ErrorResponse();
                 response.Error = "Invalid JSON format/ null parameter";
                 response.Details = ex.Message;
                 return $"{response.Error}: {response.Details}";
-                ;
             }
             catch (Exception ex)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 ErrorResponse response = new ErrorResponse();
                 response.Error = "Error";
                 response.Details = ex.Message;
@@ -41,6 +42,20 @@ namespace Cubing_Feature
         {
             public string? Error { get; set; }
             public string? Details { get; set; }
+        }
+
+        public static bool IsJson(string Object)
+        {
+            try
+            {
+                JsonSerializer.Deserialize<object>(Object);
+                return true;
+            }
+            catch
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                return false;
+            }
         }
     }
 }

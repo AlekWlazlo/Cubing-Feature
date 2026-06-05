@@ -29,11 +29,11 @@ namespace Cubing_Feature
 
                 remaining -= inBox;
             }
-            //foreach (var box in result.BoxesToUse)
-            //{
-            //    Console.WriteLine($"Box ID: {box.LicensePlateNumber}, Items: {box.NumberOfItems}");
-            //}
-            //Console.WriteLine(result.BoxesToUse[0]);
+            Console.WriteLine("\nList of Boxes and their contents:");
+            foreach (var box in result.BoxesToUse)
+            {
+                MessageFeatures.GreenColor($"Box ID: {box.BoxID}, Items: {box.NumberOfItems}");
+            }
             return result;
         }
     }
