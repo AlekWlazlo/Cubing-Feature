@@ -7,6 +7,20 @@ namespace Cubing_Feature
 {
     public static class ApiEndpoint
     {
+        public static void HandlingUserJsonToCalculateBoxesNeeded(string requestJson)
+        {
+            Console.WriteLine("API REQUEST JSON: \n");
+            MessageFeatures.YellowColor(requestJson);
+
+            string responseJson = ApiEndpoint.Calculate(requestJson);
+            Console.WriteLine("\n\nAPI RESPONSE JSON: \n");
+            Console.WriteLine($"Is valid JSON: {ApiEndpoint.IsJson(responseJson)}");
+            if (ApiEndpoint.IsJson(responseJson) == true)
+                MessageFeatures.YellowColor(responseJson);
+            else
+                MessageFeatures.RedColor(responseJson);
+        }
+
         public static string Calculate(string requestJson)
         {
             try
